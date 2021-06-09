@@ -19,12 +19,12 @@ from pyfcm import FCMNotification
 app = Flask(__name__)
 
 # Initialize Firestore DB
-cred = credentials.Certificate("b21-cap0153adhiganawasa-firebase-adminsdk-4nb1s-85265cd2ca.json")
+cred = credentials.Certificate("<YOUR SERTIFICATE>")
 default_app = initialize_app(cred)
 db = firestore.client()
 todo_ref = db.collection('data')
 # Initialize FCM
-push_service = FCMNotification(api_key="AAAAilZGMnE:APA91bEwgyJklm8jz8v1qxwllnK7sDb6-ETiN-4esdwg5u-C6FVbx2dk5a9TTt9eZTYEyPm4TtxGEjDu357sHZ8jb5tjAGKgB_HwzrcfZzxbfLkHnwzWq3e29WJGkBitVuD6hQfcS8o2")
+push_service = FCMNotification(api_key="<YOUR KEY>")
 model1 = load_model('my_modelwithl2.h5')
 
 try:
@@ -38,7 +38,6 @@ except ImportError:
 @app.route("/", methods=["GET"])
 def hello():
     """ Return a friendly HTTP greeting. """
-    #todo = todo_ref.document("wrGedrVu6IXHIx5IGzsy").get()
     
     return "Hello World! Welcome To Violence Detection Server, Auth: Hafizh F\n"
     #return jsonify(todo.to_dict()), 200
